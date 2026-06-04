@@ -1,7 +1,7 @@
 [meta]
 yal-min-version = "0.1.2"
 post-commands = [
-	"git init",
+	"git init --initial-branch=main",
 	"npm i"
 ]
 exclude = [
