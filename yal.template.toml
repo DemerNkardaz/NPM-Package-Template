@@ -1,0 +1,63 @@
+[meta]
+yal-min-version = "0.1.2"
+post-commands = [
+	"git init",
+	"npm i"
+]
+exclude = [
+	"package-lock.json",
+	"dist",
+	"node_modules"
+]
+
+[[fields]]
+id             = "package-name"
+type           = "text"
+required       = true
+default        = "{placeholder}"
+
+[[fields]]
+id             = "folder-name"
+type           = "text"
+required       = true
+default        = "{placeholder}"
+is-folder-name = true
+
+[[fields]]
+id             = "user-name"
+type           = "text"
+default        = "<!USER-NAME>"
+
+[messages]
+package-name.prompt = "Enter package name"
+package-name.placeholder = "my-package"
+folder-name.prompt = "Enter folder name"
+folder-name.placeholder = "my-package"
+user-name.prompt = "Enter GitHub username"
+
+[messages.ru]
+package-name.prompt = "Введите имя пакета"
+package-name.placeholder = "my-package"
+folder-name.prompt = "Введите имя папки"
+folder-name.placeholder = "my-package"
+user-name.prompt = "Введите имя пользователя GitHub"
+
+[[targets]]
+file   = "/package.json"
+format = "json"
+
+[[targets.fields]]
+field = "package-name"
+key   = "name"
+
+[[targets.fields]]
+value = "https://github.com/{user-name}/{package-name}"
+key   = "repository.url"
+
+[[targets.fields]]
+value = "https://github.com/{user-name}/{package-name}/issues"
+key   = "bugs.url"
+
+[[targets.fields]]
+value = "https://github.com/{user-name}/{package-name}#readme"
+key   = "homepage"

@@ -1,0 +1,10 @@
+{
+	"$schema": "https://json.schemastore.org/package.json",
+	"name": "@yalla/package-template",
+	"version": "0.0.1",
+	"description": "Universal NPM package template with TypeScript, ESLint, Prettier, and Vitest",
+	"keywords": ["template", "npm", "package", "typescript", "eslint", "prettier", "vitest"],
+	"license": "MIT",
+	"author": "Yalla Nkardaz",
+	"private": true
+}
