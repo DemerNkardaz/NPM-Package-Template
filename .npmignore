@@ -1,3 +1,28 @@
+# Sources
 src/
+
+# Config files
 *.config.ts
+*.config.js
+*.config.mjs
 tsconfig.json
+tsconfig.build.json
+verify-template.js
+
+# Dev tooling
+.editorconfig
+.npmrc
+.eslintrc*
+eslint.config.*
+prettier.config.*
+
+# CI/CD
+.github/
+.husky/
+
+# Build artifacts
+coverage/
+*.tsbuildinfo
+
+# Other
+.changeset/
