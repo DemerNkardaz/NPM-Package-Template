@@ -1,7 +1,9 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "paths": {},
+    "paths": {
+      "@/*": ["./src/*"]
+    },
     "rootDir": "./src",
     "outDir": "./dist",
     "emitDeclarationOnly": true
