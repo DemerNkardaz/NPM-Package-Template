@@ -31,14 +31,14 @@ default        = "<!USER-NAME>"
 [messages]
 package-name.prompt = "Enter package name"
 package-name.placeholder = "my-package"
-folder-name.prompt = "Enter folder name"
+folder-name.prompt = "Enter folder/repo name"
 folder-name.placeholder = "my-package"
 user-name.prompt = "Enter GitHub username"
 
 [messages.ru]
 package-name.prompt = "Введите имя пакета"
 package-name.placeholder = "my-package"
-folder-name.prompt = "Введите имя папки"
+folder-name.prompt = "Введите имя папки/репозитория"
 folder-name.placeholder = "my-package"
 user-name.prompt = "Введите имя пользователя GitHub"
 
@@ -51,13 +51,13 @@ field = "package-name"
 key   = "name"
 
 [[targets.fields]]
-value = "https://github.com/{user-name}/{package-name}"
+value = "https://github.com/{user-name}/{folder-name}"
 key   = "repository.url"
 
 [[targets.fields]]
-value = "https://github.com/{user-name}/{package-name}/issues"
+value = "https://github.com/{user-name}/{folder-name}/issues"
 key   = "bugs.url"
 
 [[targets.fields]]
-value = "https://github.com/{user-name}/{package-name}#readme"
+value = "https://github.com/{user-name}/{folder-name}#readme"
 key   = "homepage"
