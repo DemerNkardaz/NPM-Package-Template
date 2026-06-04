@@ -30,6 +30,7 @@
     "README.md",
     "LICENSE"
   ],
+  "bundleSizeLimit": 102400,
   "engines": {
     "node": ">=24.0.0"
   },

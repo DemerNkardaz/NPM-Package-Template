@@ -1,0 +1,56 @@
+name: CI code validation
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [24, 26]
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: npm
+
+      - run: npm ci
+
+      - name: Type check
+        run: npx tsc --noEmit
+
+      - name: Lint
+        run: npx eslint .
+
+      - name: Test with coverage
+        run: npx vitest run --coverage
+
+  build:
+    needs: check
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Check bundle size
+        run: |
+          LIMIT=$(node -p "require('./package.json').bundleSizeLimit ?? 102400")
+          SIZE=$(du -sb dist/ | cut -f1)
+          if [ "$SIZE" -gt "$LIMIT" ]; then exit 1; fi
