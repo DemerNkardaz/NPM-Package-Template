@@ -31,14 +31,15 @@
     "LICENSE"
   ],
   "bundleSizeLimit": 102400,
+  "sideEffects": true,
   "engines": {
-    "node": ">=24.0.0"
+    "node": ">=20.0.0"
   },
   "scripts": {
     "build:js": "node esbuild.config.mjs",
     "build:types": "tsc --project tsconfig.build.json --emitDeclarationOnly",
     "build": "npm run build:js && npm run build:types",
-    "dev": "tsup --watch",
+    "dev": "esbuild --watch",
     "lint": "eslint src --ext .ts,.tsx",
     "lint:fix": "eslint src --ext .ts,.tsx --fix",
     "format": "prettier --write \"src/**/*.{ts,tsx,json,md}\"",
@@ -60,6 +61,7 @@
     "tsup": "^8.5.1",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.60.1",
+    "vite-tsconfig-paths": "^6.1.1",
     "vitest": "^4.1.8"
   }
 }
