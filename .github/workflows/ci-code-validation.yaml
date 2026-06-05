@@ -11,7 +11,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [20, 26]
+        node-version: [24, 26]
 
     steps:
       - uses: actions/checkout@v5
@@ -21,7 +21,6 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: npm
 
-      - run: npm install -g npm@latest
       - run: npm ci
 
       - name: Type check
