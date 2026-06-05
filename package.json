@@ -31,7 +31,7 @@
     "LICENSE"
   ],
   "bundleSizeLimit": 102400,
-  "sideEffects": true,
+  "sideEffects": false,
   "engines": {
     "node": ">=24.0.0"
   },

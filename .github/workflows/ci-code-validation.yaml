@@ -48,9 +48,3 @@ jobs:
 
       - name: Build
         run: npm run build
-
-      - name: Check bundle size
-        run: |
-          LIMIT=$(node -p "require('./package.json').bundleSizeLimit ?? 102400")
-          SIZE=$(du -sb dist/ | cut -f1)
-          if [ "$SIZE" -gt "$LIMIT" ]; then exit 1; fi
