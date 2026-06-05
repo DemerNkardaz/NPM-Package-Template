@@ -32,6 +32,6 @@ const distFiles = readdirSync('dist').filter((f) => !f.endsWith('.map'));
 const totalSize = distFiles.reduce((sum, f) => sum + statSync(`dist/${f}`).size, 0);
 
 if (totalSize > limit) {
-	console.error(`Bundle too large: ${totalSize} > ${limit}`);
+	console.log('\x1b[33m%s\x1b[0m', `Bundle too large: ${totalSize} > ${limit}`);
 	process.exit(1);
 }

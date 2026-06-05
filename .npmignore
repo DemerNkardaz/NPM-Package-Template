@@ -26,3 +26,12 @@ coverage/
 
 # Other
 .changeset/
+
+# Dist
+dist/**/*.map
+dist/**/*.d.ts.map
+dist/meta-*.json
+dist/**/*.test.d.ts
+dist/**/*.test.d.ts.map
+dist/**/*.spec.d.ts
+dist/**/*.spec.d.ts.map
