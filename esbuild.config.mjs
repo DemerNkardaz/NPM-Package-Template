@@ -72,8 +72,16 @@ const resultCJS = await build({
 await writeFile('dist/meta-esm.json', JSON.stringify(resultMJS.metafile));
 await writeFile('dist/meta-cjs.json', JSON.stringify(resultCJS.metafile));
 
-const distFiles = readdirSync('dist').filter((f) => !f.endsWith('.map') && !f.endsWith('.json'));
-const totalSize = distFiles.reduce((sum, f) => sum + statSync(`dist/${f}`).size, 0);
+function getDirSize(dir) {
+	return readdirSync(dir).reduce((sum, f) => {
+		const full = `${dir}/${f}`;
+		if (statSync(full).isDirectory()) return sum + getDirSize(full);
+		if (f.endsWith('.map') || f.endsWith('.json')) return sum;
+		return sum + statSync(full).size;
+	}, 0);
+}
+
+const totalSize = getDirSize('dist');
 
 if (totalSize > limit) {
 	console.log('\x1b[33m%s\x1b[0m', `Bundle too large: ${totalSize} > ${limit}`);
