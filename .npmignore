@@ -28,7 +28,6 @@ coverage/
 
 # Other
 .changeset/
-.github/
 .vscode/
 
 # Dist
