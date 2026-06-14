@@ -1,13 +1,13 @@
 {
-  "name": "@yalla/package-template",
+  "name": "@nkardaz/package-template",
   "version": "0.0.1",
-  "description": "Your package description here",
+  "description": "",
   "license": "MIT",
   "author": "Yalla Nkardaz",
   "keywords": [],
   "repository": {
     "type": "git",
-    "url": "https://github.com/<USER-NAME>/<REPO>"
+    "url": "git+https://github.com/<USER-NAME>/<REPO>.git"
   },
   "homepage": "https://github.com/<USER-NAME>/<REPO>#readme",
   "bugs": {
@@ -24,12 +24,6 @@
       "require": "./dist/index.cjs"
     }
   },
-  "files": [
-    "dist",
-    "package.json",
-    "README.md",
-    "LICENSE"
-  ],
   "bundleSizeLimit": 102400,
   "sideEffects": false,
   "engines": {
@@ -58,7 +52,6 @@
     "eslint-config-prettier": "^10.1.8",
     "knip": "^6.15.0",
     "prettier": "^3.0.0",
-    "tsup": "^8.5.1",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.60.1",
     "vite-tsconfig-paths": "^6.1.1",

@@ -3,9 +3,6 @@ import { rm } from 'node:fs/promises';
 import { readdirSync, statSync } from 'node:fs';
 import { writeFile } from 'node:fs/promises';
 
-import pkg from './package.json' with { type: 'json' };
-const limit = sizeToKB(pkg.bundleSizeLimit ?? 102400);
-
 await rm('dist', {
 	recursive: true,
 	force: true,
@@ -82,10 +79,12 @@ function getDirSize(dir) {
 }
 
 function sizeToKB(size) {
-	return (size / 1024).toFixed(2);
+	return size / 1024;
 }
 
+import pkg from './package.json' with { type: 'json' };
 const totalSize = sizeToKB(getDirSize('dist'));
+const limit = sizeToKB(pkg.bundleSizeLimit ?? 102400);
 
 if (totalSize > limit) {
 	console.log('\x1b[33m%s\x1b[0m', `Bundle too large: ${totalSize}KB > ${limit}KB`);

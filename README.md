@@ -1,17 +1,17 @@
-# @yalla/package-template
+# @nkardaz/package-template
 
 > Your package description here
 
 ## Installation
 
 ```bash
-npm install @yalla/package-template
+npm install @nkardaz/package-template
 ```
 
 ## Usage
 
 ```typescript
-import { yourFunction } from '@yalla/package-template';
+import { yourFunction } from '@nkardaz/package-template';
 
 const result = yourFunction();
 console.log(result);
