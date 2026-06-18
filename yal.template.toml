@@ -51,7 +51,7 @@ field = "package-name"
 key   = "name"
 
 [[targets.fields]]
-value = "https://github.com/{user-name}/{folder-name}"
+value = "git+https://github.com/{user-name}/{folder-name}.git"
 key   = "repository.url"
 
 [[targets.fields]]

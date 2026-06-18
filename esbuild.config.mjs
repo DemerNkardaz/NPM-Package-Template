@@ -26,15 +26,8 @@ const common = {
 		format: 'esm',
 		outfile: 'dist/your-import.mjs',
 	});
-	const yourImportCJS = await build({
-		...common,
-		entryPoints: ['src/your-import.ts'],
-		format: 'cjs',
-		outfile: 'dist/your-import.cjs',
-	});
 
 	await writeFile('dist/your-import-meta-esm.json', JSON.stringify(yourImportMJS.metafile));
-	await writeFile('dist/your-import-meta-cjs.json', JSON.stringify(yourImportCJS.metafile));
 */
 
 const externalImportsPlugin = (format) => ({
@@ -43,7 +36,7 @@ const externalImportsPlugin = (format) => ({
 		build.onResolve({ filter: /.*/ }, (args) => {
 			// if (args.importer && args.path.includes('/your-import')) {
 			// 	return {
-			// 		path: format === 'esm' ? './your-import.mjs' : './your-import.cjs',
+			// 		path: './your-import.mjs',
 			// 		external: true,
 			// 	};
 			// }
@@ -58,16 +51,8 @@ const resultMJS = await build({
 	outfile: 'dist/index.mjs',
 	plugins: [externalImportsPlugin('esm')],
 });
-const resultCJS = await build({
-	...common,
-	entryPoints: ['src/index.ts'],
-	format: 'cjs',
-	outfile: 'dist/index.cjs',
-	plugins: [externalImportsPlugin('cjs')],
-});
 
 await writeFile('dist/meta-esm.json', JSON.stringify(resultMJS.metafile));
-await writeFile('dist/meta-cjs.json', JSON.stringify(resultCJS.metafile));
 
 function getDirSize(dir) {
 	return readdirSync(dir).reduce((sum, f) => {
