@@ -14,14 +14,12 @@
     "url": "https://github.com/<USER-NAME>/<REPO>/issues"
   },
   "type": "module",
-  "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
+      "import": "./dist/index.mjs"
     }
   },
   "bundleSizeLimit": 102400,
@@ -41,20 +39,22 @@
     "test": "vitest --run",
     "test:coverage": "vitest --run --coverage",
     "prepublishOnly": "npm run build && npm run lint && npm run type-check",
-    "knip": "knip"
+    "knip": "knip",
+    "e18e": "npx @e18e/cli analyze",
+    "analyze": "npm run knip || npm run e18e"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@types/node": "^25.9.1",
-    "@vitest/coverage-v8": "^4.1.8",
-    "esbuild": "^0.28.0",
-    "eslint": "^10.4.1",
+    "@types/node": "^26.0.0",
+    "@vitest/coverage-v8": "^4.1.9",
+    "esbuild": "^0.28.1",
+    "eslint": "^10.5.0",
     "eslint-config-prettier": "^10.1.8",
-    "knip": "^6.15.0",
-    "prettier": "^3.0.0",
+    "knip": "^6.17.1",
+    "prettier": "^3.8.4",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.60.1",
+    "typescript-eslint": "^8.61.1",
     "vite-tsconfig-paths": "^6.1.1",
-    "vitest": "^4.1.8"
+    "vitest": "^4.1.9"
   }
 }
