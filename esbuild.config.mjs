@@ -11,7 +11,7 @@ await rm('dist', {
 const common = {
 	bundle: true,
 	treeShaking: true,
-	sourcemap: true,
+	sourcemap: false,
 	metafile: true,
 	platform: 'neutral',
 	target: 'es2022',
